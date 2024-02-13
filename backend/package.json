@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "babel": "^6.23.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0"
