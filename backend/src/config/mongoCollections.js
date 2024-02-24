@@ -18,4 +18,6 @@ const getCollectionFn = (collection) => {
 module.exports = {
     users: getCollectionFn("users"),
     samples: getCollectionFn("sample"),
+    songs: getCollectionFn("songs"),
+
 };
