@@ -41,6 +41,19 @@ router.get('/example/:id', (req, res) => {
   res.json(jsonToSend);
 });
 
+router.get('/example/:id/samples', (req, res) => {
+  const jsonToSend = {
+    'samples': [
+      {
+        'songId': 'Song ID',
+        'samples': ['Sample ID 1', 'Sample ID 2'],
+        'sampledBy': ['Sampled ID 1', 'Sampled ID 2'],
+      },
+    ],
+  };
+  res.json(jsonToSend);
+});
+
 app.use('/', router);
 
 module.exports = app;
