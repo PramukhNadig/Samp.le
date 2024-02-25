@@ -15,13 +15,14 @@ const songs = mongoCollections.songs;
     }
 */
 
-const createSong = async (title, artist, album, year, genre, artwork) => {
+const createSong = async (title, artist, album, year, genre, artwork, ytlink) => {
     if (!title || typeof title !== 'string') throw 'Invalid title';
     if (!artist || typeof artist !== 'string') throw 'Invalid artist';
     if (!album || typeof album !== 'string') throw 'Invalid album';
     if (!year || typeof year !== 'number') throw 'Invalid year';
     if (!genre || typeof genre !== 'string') throw 'Invalid genre';
     if (!artwork || typeof artwork !== 'string') throw 'Invalid artwork';
+    if (!ytlink || typeof ytlink !== 'string') throw 'Invalid ytlink';
 
     const songCollection = await songs();
     const newSong = {
@@ -30,7 +31,8 @@ const createSong = async (title, artist, album, year, genre, artwork) => {
         album: album,
         year: year,
         genre: genre,
-        artwork: artwork
+        artwork: artwork,
+        ytlink: ytlink
     };
 
     const insertInfo = await songCollection.insertOne(newSong);
@@ -55,7 +57,7 @@ const getSong = async (id) => {
     return song;
 }
 
-const updateSong = async (id, title, artist, album, year, genre, artwork) => {
+const updateSong = async (id, title, artist, album, year, genre, artwork, ytlink) => {
     if (!id || typeof id !== 'string') throw 'Invalid id';
     if (!title || typeof title !== 'string') throw 'Invalid title';
     if (!artist || typeof artist !== 'string') throw 'Invalid artist';
@@ -63,6 +65,7 @@ const updateSong = async (id, title, artist, album, year, genre, artwork) => {
     if (!year || typeof year !== 'number') throw 'Invalid year';
     if (!genre || typeof genre !== 'string') throw 'Invalid genre';
     if (!artwork || typeof artwork !== 'string') throw 'Invalid artwork';
+    if (!ytlink || typeof ytlink !== 'string') throw 'Invalid ytlink';
 
     const songCollection = await songs();
     const updatedSong = {
@@ -71,7 +74,8 @@ const updateSong = async (id, title, artist, album, year, genre, artwork) => {
         album: album,
         year: year,
         genre: genre,
-        artwork: artwork
+        artwork: artwork,
+        ytlink: ytlink
     };
 
     const updatedInfo = await songCollection.updateOne({ _id: mongodb.ObjectID(id) }, { $set: updatedSong });
