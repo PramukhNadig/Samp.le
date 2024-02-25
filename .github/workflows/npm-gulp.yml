@@ -27,8 +27,11 @@ jobs:
         cd backend
         npm install
         npm run build
-      env:
-        CI: ""
+    - name: lint
+      run: |
+        cd backend
+        npm run lint
+
     - name: Build Frontend
       run: |
         cd web_app
