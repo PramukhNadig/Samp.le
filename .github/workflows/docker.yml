@@ -4,6 +4,7 @@ on:
   push:
     branches: [ master, GKE-setup ]
 
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
