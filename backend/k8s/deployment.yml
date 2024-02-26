@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: samp.le-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: samp.le-backend
+  template:
+    metadata:
+      labels:
+        app: samp.le-backend
+    spec:
+      containers:
+      - name: samp.le-backend
+        image: your-dockerhub-username/your-repo-name:latest
+        ports:
+        - containerPort: 8080
