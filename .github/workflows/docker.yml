@@ -17,7 +17,8 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-
+    - name: cd backend
+      run: cd backend
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
       with:
@@ -26,8 +27,9 @@ jobs:
         tags: pnadig/sample-backend:latest
     - name: Deploy to GKE
       run: |
+        cd backend
         gcloud container clusters get-credentials ${{ secrets.GKE_CLUSTER_NAME }} --region ${{ secrets.GKE_CLUSTER_REGION }} --project ${{ secrets.GCLOUD_PROJECT_ID }}
-        kubectl apply -f deployment.yaml
+        kubectl apply -f k8s/deployment.yaml
       env:
         GCLOUD_PROJECT_ID: ${{ secrets.GCLOUD_PROJECT_ID }}
         GCLOUD_SA_KEY: ${{ secrets.GCLOUD_SA_KEY }}
