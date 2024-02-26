@@ -19,6 +19,8 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: cd backend
       run: cd backend
+    - name: print working directory
+      run: pwd
     - name: Build and push Docker image
       uses: docker/build-push-action@v2
       with:
