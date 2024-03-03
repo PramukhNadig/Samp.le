@@ -1,22 +1,19 @@
-import "./index.css";
 import React from "react";
+import "./modals.css";
 
-export default function HelpModal(props) {
+export default function StatsModal(props) {
 
-    if(!props.isHelpModalOpen) {
+    if(!props.isStatsModalOpen) {
         return null;
     }
 
     return(
         <div className="modal-blur"
         onClick={() => {
-            props.setIsHelpModalOpen(false);
+            props.setIsStatsModalOpen(false);
         }}>
             <div className="modal-body"
             onClick={e => {e.stopPropagation()}}>
-                <div className="modal-header">
-                    <span>HOW TO PLAY</span>
-                </div>
             </div>
         </div>
     )
